@@ -18,7 +18,7 @@ class MyCollectionViewCell: UICollectionViewCell {
 
     lazy var contentsView: UIView = {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .orange.withAlphaComponent(0.5)
 
         return view
     }()
@@ -35,6 +35,12 @@ class MyCollectionViewCell: UICollectionViewCell {
         addSubviews()
 
         configure()
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            contentsView.backgroundColor = isSelected ? .orange : .orange.withAlphaComponent(0.5)
+        }
     }
 
     override func prepareForReuse() {
